@@ -2,6 +2,7 @@ package com.thegauravparmar.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -79,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
         ((ImageView)findViewById(R.id.imageView7)).setImageResource(0);
         ((ImageView)findViewById(R.id.imageView8)).setImageResource(0);
 
+    }
+
+    public void openStore(View view){
+        startActivity(new Intent(this, PaymentActivity.class));
     }
 
 
