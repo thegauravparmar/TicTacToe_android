@@ -48,9 +48,11 @@ public class PaymentActivity extends AppCompatActivity {
     private void loadPurchases(){
         Log.d("debugg", "Supported inapp " + client.isFeatureSupported(BillingClient.SkuType.INAPP).getResponseCode());
         List<String> skuList = new ArrayList<>();
-        // yaha jitne chahe add karlo product ids, abhi sirf 2 hi hai
+        // yaha jitne chahe add karlo product ids, abhi sirf 3 hi hai
         skuList.add("credits_500");
         skuList.add("credits_100");
+        skuList.add("purchase_credits");
+
         SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
         params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
         client.querySkuDetailsAsync(params.build(),
@@ -85,11 +87,11 @@ public class PaymentActivity extends AppCompatActivity {
                 if(response == BillingClient.BillingResponseCode.USER_CANCELED){
                     Toast.makeText(getApplicationContext(), "Payment Cancelled by User", Toast.LENGTH_LONG).show();
                 }else if(response == BillingClient.BillingResponseCode.OK){
-                    Toast.makeText(getApplicationContext(), "Payment Success", Toast.LENGTH_LONG).show();
                     // yaha se seedhe connectToGoogle me jo setListner kiya hai waha aayega response onPurchasesUpdated pr
                 }else{
                     Toast.makeText(getApplicationContext(), "Error Detecting Payment", Toast.LENGTH_LONG).show();
                 }
+
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(PaymentActivity.this));
